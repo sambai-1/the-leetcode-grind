@@ -1,0 +1,3 @@
+dictionaries
+- mutable objects aren't hashable
+- - dictionaries themselves can't be keys
