@@ -1,3 +1,7 @@
+this is a thing
+- defaultdict(list) (creates a dictionary with defaulted value [])
+
+
 dictionaries
 - mutable objects aren't hashable
 - - dictionaries themselves can't be keys

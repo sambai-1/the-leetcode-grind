@@ -5,12 +5,16 @@ def groupAnagrams(strs):
     """
     ans = {}
     for i in strs:
-        tmp = {}
+        tmp = [0] * 26
         for j in i:
-            tmp[j] = tmp.get(j, 0) + 1
-        ans[tmp] = tmp.get(tmp, []).append(i)
+            tmp[ord(j) - ord('i')] += 1
+        if tuple(tmp) in ans:
+            ans[tuple(tmp)].append(i)
+        else:
+            ans[tuple(tmp)] = [i]
     
     return list(ans.values())
 
+#next time use defaultdict(list) to initialize ans
 strs = ["eat","tea","tan","ate","nat","bat"]
 print(groupAnagrams(strs))
