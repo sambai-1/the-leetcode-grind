@@ -11,7 +11,10 @@ class Solution(object):
             prereqs[x].append(y)
         
         visited = set()
+        completed = set()
         def dfs(curr):
+            if curr in completed:
+                return True
             if curr in visited:
                 return False
             if curr not in prereqs:
@@ -21,6 +24,7 @@ class Solution(object):
                 if not dfs(i):
                     return False
             visited.remove(curr)
+            completed.add(curr)
             return True
 
         for i, j in prereqs.items():
