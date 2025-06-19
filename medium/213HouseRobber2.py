@@ -4,6 +4,8 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        if len(nums) == 1:
+            return nums[0]
         def search(nums):
             a = 0
             b = 0
