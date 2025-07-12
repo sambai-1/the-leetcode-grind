@@ -1,4 +1,4 @@
-class Solution(object):
+'''class Solution(object):
     def wordBreak(self, s, wordDict):
         """
         :type s: str
@@ -19,3 +19,27 @@ class Solution(object):
             tested[rest] = False
             return False
         return dfs(s)
+        '''
+        
+from typing import List
+
+
+def wordBreak(s: str, wordDict: List[str]) -> bool:
+    checked = [0] * len(s)
+
+    def dfs(index):
+        if index == len(s):
+            return True
+        if checked[index]:
+            return checked[index]
+        
+        checked[index] = False
+        for i in range(index, len(s)):
+            word = s[index: i + 1]
+            if word in wordDict:
+                checked[index] = checked[index] or dfs(i + 1)
+        return checked[index]
+
+    return dfs(0)
+
+print(wordBreak(s = "catsincars", wordDict = ["cats","cat","sin","in","car"]))
