@@ -1,19 +1,23 @@
+from bisect import bisect_left
 from typing import List
 
 
-class Solution:
-    def lengthOfLIS(self, nums: List[int]) -> int:
-        memo = [0] * (len(nums) + 1)
-        memo[-1] = 0
-        nums.append(float("inf"))
-        for i in range(len(nums) - 2, -1, -1):
-            most = -1
-            for j in range(i + 1, len(nums)):
-                if memo[j] >= most and nums[j] > nums[i]:
-                    most = memo[j]
-            memo[i] = most + 1
-        
-        ans = 0
-        for i in memo:
-            ans = max(ans, i)
-        return ans
+'''def lengthOfLIS(nums):
+    sub = []
+    for num in nums:
+        i = bisect_left(sub,num)
+
+        #If index is greater than any element in the current sub array
+        if i == len(sub):
+            sub.append(num)
+
+        #Otherwise, replace the first element in the current sub array
+        #greater than or equal to num
+        else:
+            sub[i] = num
+    return len(sub)
+
+print(lengthOfLIS(nums = [10,9,2,5,3,7,101,18]))
+
+huhr???? how would i come up with this solution
+'''
